@@ -10,14 +10,23 @@
 get_header(); ?>
 
 <div class="row">
-	<section id="page" class="span7">	
-	<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-		<h1><?php _e( 'Page Not Found', 'twentyten' ); ?></h1>
-			<p><?php _e( 'We\'re so sorry, but the page you are looking for has either moved or does not exist. Maybe searching for something else will help.', 'twentyten' ); ?></p>
-			<?php get_search_form(); ?>
-	</section><!--end page-->
+    <section id="page" class="span7">
+        <?php
+        if (have_posts()):
+            while (have_posts()): the_post();
+                ?>
+                <h1><?php _e('Page Not Found', 'twentyten'); ?></h1>
+                <p><?php _e('We\'re so sorry, but the page you are looking for has either moved or does not exist. Maybe searching for something else will help.', 'twentyten'); ?></p>
+            <?php endwhile; else: ?>
+            <h1>Page not found</h1>
+            <p>We are unable to locate the information requested. Please try using the web site search function.</p>
 
-	<?php include ('sidebar-page.php'); ?>
+        <?php endif; ?>
+    </section>
+
+    <!--end page-->
+
+    <?php include ('sidebar-page.php'); ?>
 </div><!--end row-->
 
 <?php include ('sidebar-footer.php'); ?>
